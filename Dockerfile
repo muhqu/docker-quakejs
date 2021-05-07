@@ -8,6 +8,8 @@ LABEL maintainer="bashNinja"
 
 ENV PORT=8080
 
+ADD quakejs/ /app/quakejs/
+
 RUN \
  echo "**** install build env ****" && \
  apt-get update && \
@@ -21,10 +23,6 @@ RUN \
  apt-get update && \
  apt-get install -y \
 	nodejs && \
- echo "**** install quakejs ****" && \
- mkdir -p \
-	/app/quakejs && \
- git clone --recurse-submodules https://github.com/inolen/quakejs /app/quakejs/ && \
  echo "**** install node modules ****" && \
  npm config set unsafe-perm true && \
  npm install --production \
